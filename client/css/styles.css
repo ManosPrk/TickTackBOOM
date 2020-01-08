@@ -12,8 +12,32 @@ body{
                                     supported by Chrome, Opera and Firefox */
   }
 
+.active{
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+#standings-modal{
+    display: none;
+}
+
+#standings{
+    background: aliceblue;
+    opacity: 0.9;
+    width: 30vh;
+    height: 30vh;
+    align-self: center;
+    border: 4px solid grey;
+    border-radius: 2px;
+}
+
 #app-container{
-    background: rgb(42, 42, 42);
+    /* background: rgb(42, 42, 42); */
+    background: #000080;
     color: aliceblue;
     text-decoration: none;
     justify-content: space-between;
@@ -31,6 +55,7 @@ body{
 #menu-anchor{
     width: 30%;
 }
+
 
 
 #bomb{

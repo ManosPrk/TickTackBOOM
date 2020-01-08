@@ -60,6 +60,9 @@ export class Game{
     
 
     resetGameState(){
+        this.players.forEach(player =>{
+            player.reset();
+        })
         this.dice.reset();
         this.cardDrawn = false;
         this.bomb.reset();
@@ -85,12 +88,18 @@ export class Game{
     }
 
     showModal(){
-        console.log('THIS IS A MODAL');
+        
+        console.log(this.getStandings());
         this.resetGameState();
     }
 
     getStandings(){
-        return this.players.sort((a, b) => (b.cardsTaken > a.cardsTaken) ? 1: -1);
+        this.players.sort((a, b) => (b.cardsTaken > a.cardsTaken) ? 1: -1);
+        let standings = []
+        this.players.array.forEach(player => {
+            standings.push(`${player.name}, rounds lost: ${cards.cardsTaken}`)
+        });
+        return standings;
     }
 
 

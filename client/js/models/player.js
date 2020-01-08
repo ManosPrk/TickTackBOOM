@@ -5,4 +5,8 @@ export class Player extends Entity{
         super(name, id);
         this.cardsTaken = 0;
     }
+
+    reset(){
+        this.cardsTaken = 0;
+    }
 }
