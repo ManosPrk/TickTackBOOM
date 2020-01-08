@@ -3,12 +3,13 @@ import { Bomb } from "./bomb.js";
 import { Dice } from "./dice.js";
 import { Player } from "./player.js";
 import { Round } from "./round.js";
+import { Common } from "../common/common.js";
 
 
 export class Game{
     constructor(players){
         this.randomTime = function(){ return Math.floor(Math.random() * (40 - 15) + 15)};
-        this.cards = Repo.getCards();
+        this.cards = Common.shuffle(Repo.getCards());
         this.currentCard;
         this.cardDrawn = false;
         this.bomb = new Bomb();
@@ -52,7 +53,6 @@ export class Game{
         if (!this.cardDrawn){
             this.cardEle.querySelector("#syllable").textContent = this.cards.shift().name;
             this.cardDrawn = true;
-            console.log(this.cards);
         }else{
             alert('You have already drawn a card')
         }
