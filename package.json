@@ -2,7 +2,9 @@
   "name": "tic-tac-node",
   "version": "1.0.0",
   "description": "Fun game",
-  "engines": { "node": "12.x" },
+  "engines": {
+    "node": "12.x"
+  },
   "main": "index.js",
   "scripts": {
     "dev": "nodemon index.js",
@@ -12,6 +14,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "canvas": "^2.6.1",
     "cookie-parser": "^1.4.4",
     "express": "^4.17.1",
     "jquery": "^3.4.1",
