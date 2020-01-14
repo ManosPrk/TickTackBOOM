@@ -2,6 +2,7 @@
   "name": "tic-tac-node",
   "version": "1.0.0",
   "description": "Fun game",
+  "engines": { "node": "12.x" }
   "main": "index.js",
   "scripts": {
     "dev": "nodemon index.js",
@@ -20,5 +21,4 @@
   "devDependencies": {
     "nodemon": "^2.0.2"
   },
-  "engines": { "node": "12.x" }
 }
