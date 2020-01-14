@@ -6,6 +6,8 @@ import { Round } from "./round.js";
 import { Common } from "../common/common.js";
 
 
+
+
 export class Game{
     constructor(players){
         this.randomTime = function(){ return Math.floor(Math.random() * (40 - 15) + 15)};
@@ -17,8 +19,15 @@ export class Game{
         this.players = players;
         this.diceEle = document.getElementById('dice');
         this.cardEle = document.getElementById('card');
-        this.bombEle = document.getElementById('bomb')
+        this.bombEle = document.getElementById('bomb');
+        this.stadingsEle = document.getElementById('standings');
+        this.standingsModalEle = document.getElementById('standings-modal');
+        this.selectLoserEle = document.getElementById('select-loser');
+        this.loserModalEle = document.getElementById('select-loser-modal');
+        this.cardsLeftEle = document.getElementById('cards-left');
+        this.players.forEach(player => this.createPlayerElement(player));
         let instance = this;
+        this.showCardsLeft();
 
         this.diceEle.addEventListener('click', function(){
             instance.dice.roll(instance.intervalLoop);
@@ -29,9 +38,30 @@ export class Game{
         })
 
         this.bombEle.addEventListener('click', function(){
-                instance.newRound();
+            instance.newRound();
+        })
+
+        this.standingsModalEle.addEventListener('click', function(){
+            this.style.display = 'none';
+            instance.resetGameState();
         })
         
+    }
+
+    createPlayerElement(player){
+
+        let playerElement = document.createElement('li');
+        playerElement.classList.add('player-element');
+        playerElement.classList.add('noselect');
+        playerElement.textContent = `${player.name}`;
+        playerElement.addEventListener('click', function(){
+            player.cardsTaken++;
+            this.loserModalEle.style.display = 'none';
+            if (this.cards.length === 0){
+                this.getStandings();
+            }
+        }.bind(this))
+        this.selectLoserEle.appendChild(playerElement);
     }
 
     intervalLoop(foo){
@@ -52,17 +82,28 @@ export class Game{
     getCard(){
         if (!this.cardDrawn){
             this.cardEle.querySelector("#syllable").textContent = this.cards.shift().name;
+            this.showCardsLeft();
             this.cardDrawn = true;
         }else{
             alert('You have already drawn a card')
         }
     }
+
+    showCardsLeft(){
+        this.cardsLeftEle.textContent = `Cards Left: ${this.cards.length}`;
+    }
     
 
     resetGameState(){
+        this.standingsModalEle.display = 'none';
+        this.stadingsEle.innerHTML = '';
+        this.cards = Repo.getCards();
         this.players.forEach(player =>{
             player.reset();
         })
+    }
+
+    resetRoundState(){
         this.dice.reset();
         this.cardDrawn = false;
         this.bomb.reset();
@@ -87,19 +128,28 @@ export class Game{
         }
     }
 
-    showModal(){
-        
-        console.log(this.getStandings());
-        this.resetGameState();
+    showSelectLoserModal(){
+        this.loserModalEle.style.display = 'flex';
+        this.resetRoundState();
     }
+
+
 
     getStandings(){
         this.players.sort((a, b) => (b.cardsTaken > a.cardsTaken) ? 1: -1);
-        let standings = []
-        this.players.array.forEach(player => {
-            standings.push(`${player.name}, rounds lost: ${cards.cardsTaken}`)
+        this.players.forEach((player, index) => {
+            if (index === 0){
+                let loserHeader = document.createElement('h1');
+                loserHeader.classList.add('modal-header');
+                loserHeader.textContent = `${player.name} Lost!`;
+                this.stadingsEle.appendChild(loserHeader);
+            }
+            let listItem = document.createElement('li');
+            listItem.classList.add('standings-list-items');
+            listItem.textContent = `${player.name}, rounds lost: ${player.cardsTaken}`;
+            this.stadingsEle.appendChild(listItem);
         });
-        return standings;
+        this.standingsModalEle.style.display = 'flex';
     }
 
 

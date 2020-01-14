@@ -2,15 +2,22 @@ import { Test } from "./test/testRepo.js";
 import { Dice } from "./models/dice.js";
 import { Game } from "./models/game.js";
 import { Player } from "./models/player.js";
+import { Common } from "./common/common.js";
 
-class Main{
+
+export class Main{
     constructor(){
-        this.players = [new Player('takis', 0), new Player('maria', 1), new Player('giorgos', 2)];
-        this.players[0].cardsTaken = 5;
-        this.players[1].cardsTaken = 8;
+        this.players = [];
+        let formData = JSON.parse(Common.getCookie('players-data'));
+        let arr = Object.values(formData);
+        arr.forEach((player, index) => this.players.push(new Player(player, index)));
+        // playersInput.forEach(p => console.log(p));
+        // this.players = [new Player('Takis', 0), new Player('Maria', 1), new Player('Giorgos', 2), new Player('Kona', 3), 
+        //                 new Player('Christina', 4), new Player('Stergios', 5), new Player('Manos', 6), new Player('Antonia', 7)];
         let game = new Game(this.players);
+        
+        // console.log(playersInput);
     }
 }
 
 let main = new Main();
-

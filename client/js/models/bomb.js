@@ -22,7 +22,7 @@ export class Bomb{
                     bombTickAudio.pause();
                     bombExplodingAudio.play();
                     this.exploded = true;
-                    game.showModal();
+                    game.showSelectLoserModal();
                 }, randomExplodingTime * 1000);
             })
         })

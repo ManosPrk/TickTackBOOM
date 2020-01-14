@@ -11,7 +11,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
+    "cookie-parser": "^1.4.4",
+    "express": "^4.17.1",
+    "jquery": "^3.4.1",
+    "jsdom": "^15.2.1",
+    "memory-cache": "^0.2.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.2"

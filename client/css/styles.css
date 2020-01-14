@@ -1,5 +1,6 @@
 body{
     margin: 0;
+    
 }
 
 .noselect {
@@ -12,8 +13,8 @@ body{
                                     supported by Chrome, Opera and Firefox */
   }
 
-.active{
-    display: flex;
+.modal{
+    display: none;
     justify-content: center;
     position: fixed;
     width: 100%;
@@ -21,41 +22,85 @@ body{
     background: rgba(0, 0, 0, 0.5);
 }
 
-#standings-modal{
-    display: none;
-}
-
-#standings{
+.player-list{
+    padding: 0.5rem;
+    font-weight: normal;
+    font-size: 1.5rem;
     background: aliceblue;
     opacity: 0.9;
-    width: 30vh;
-    height: 30vh;
+    min-width: 20vh;
+    min-height: 20vh;
     align-self: center;
     border: 4px solid grey;
     border-radius: 2px;
 }
 
-#app-container{
-    /* background: rgb(42, 42, 42); */
-    background: #000080;
+.modal-header{
+    text-align: center;
+}
+
+.standings-list-items, .player-element{
+    list-style-type: none;
+    text-align: center;
+    font-size: 2rem;
+}
+
+.page-container{
+    background: rgb(42, 42, 42);
+    /* background: #000080; */
     color: aliceblue;
     text-decoration: none;
-    justify-content: space-between;
     display: flex;
     flex-flow: column;
     height: 100vh;
+    padding: 0.5rem;
+    box-sizing: border-box;
 }
+
+#player-input-container form input{
+    margin: 0.5rem 0rem;
+
+}
+
+#default-page-container{
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#app-container{
+    justify-content: space-between;
+    
+}
+
+
+.game-button{
+    background-color: #555555;
+    border: none;
+    color: aliceblue;
+    padding: 15px 32px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 4px;
+}
+
 
 .game-anchor{
     color: aliceblue;
     text-decoration: none;
-    padding: 0rem 1rem;
+}
+
+#play-button{
+    font-size: 5rem;
 }
 
 #menu-anchor{
     width: 30%;
 }
 
+#menu-text{
+    font-size: 2rem;
+}
 
 
 #bomb{
@@ -69,13 +114,12 @@ body{
 }
 
 #cards-left{
-    padding: 1rem;
+    padding: 1rem 0rem;
     font-size: 2rem;
 }
 
 #game-items-container{
     display: flex;
-    margin: 1rem;
     justify-content: space-between;
 }
 
@@ -83,6 +127,9 @@ body{
     margin: 1rem 0rem 1rem 0rem;
     width: 5rem;
     height: 5rem;
+    font-size: 1.8rem;
+    /* color: #656769; */
+    /* background: #ffe500; */
     border: 1px solid aliceblue;
     justify-content: center;
     text-align: center;
@@ -102,3 +149,4 @@ body{
     border: solid 4px aliceblue;
     border-radius: 2px;
 }
+

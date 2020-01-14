@@ -8,9 +8,16 @@ export class Repo{
         return entities;
     }
 
-    static getCards(){
-        let syllables = ['ΜΟ', 'ΜΟΥ', 'ΙΜΙ', 'ΛΟ', 'ΞΟ'];
-        return this.getEntities(syllables);
+    static getCards(numberOfCards){
+        let syllables = ['ΜΟ', 'ΜΟΥ', 'ΙΜΙ', 'ΛΟ', 'ΞΟ', 'ΡΟ', 'ΣΟΥ', 'ΠΟΥ', 'ΛΟΥ', 'ΚΑ'];
+        if (!!numberOfCards){
+            return this.getEntities(syllables).slice(0, numberOfCards);
+        }
+        else{
+            return this.getEntities(syllables).slice(0, syllables.length);
+        }
+        
+        
     }
 
     static getSides(){

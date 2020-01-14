@@ -1,21 +1,39 @@
+
 const express = require('express')
+const cookieParser = require('cookie-parser')
 const fs = require('fs')
 const app = express()
 const port = 3000
+var jsdom = require("jsdom");
 
-const players = [];
+///get JQ
+const { JSDOM } = jsdom;
+const { window } = new JSDOM();
+const { document } = (new JSDOM('')).window;
+global.document = document;
 
-app.use(express.static('client'))
+var $ = jQuery = require('jquery')(window);
+///
+var players = [];
 
-app.get('/', (req, res) => res.sendFile(__dirname + '/views/index.html'))
+app.use(cookieParser());
+app.use(express.static('client'));
+app.use(express.urlencoded({extended: true}));
+app.use(express.json());
+app.use('/js', express.static(__dirname + '/node_modules/jquery/dist'))
+
+app.get('/', (req, res) => res.sendFile(__dirname + '/views/default.html'))
+
+app.get('/game', (req, res) => res.sendFile(__dirname + '/views/index.html'))
 
 app.get('/players', (req, res) => res.sendFile(__dirname + '/views/players.html'))
 
-app.post('/players', (req, res) => {
-    console.log(req);
-    res.send('OK');
-})
+// console.log(app.locals);
 
+app.post('/game', (req, res) => {
+    res.cookie('players-data', JSON.stringify(req.body));
+    res.sendFile(__dirname + '/views/index.html');
+})
 
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
