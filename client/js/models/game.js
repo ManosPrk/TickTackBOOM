@@ -5,13 +5,10 @@ import { Player } from "./player.js";
 import { Round } from "./round.js";
 import { Common } from "../common/common.js";
 
-
-
-
 export class Game{
     constructor(players){
-        this.randomTime = function(){ return Math.floor(Math.random() * (40 - 15) + 15)};
-        this.cards = Common.shuffle(Repo.getCards());
+        this.randomTime = () => { return Math.floor(Math.random() * (40 - 10) + 10)};
+        this.cards = Common.shuffle(Repo.getCards(2));
         this.currentCard;
         this.cardDrawn = false;
         this.bomb = new Bomb();
