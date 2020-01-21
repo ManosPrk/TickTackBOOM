@@ -38,7 +38,6 @@ app.get('/players', (req, res) => res.render(
 app.post('/game', (req, res) => {
     let arr = Object.values(req.body);
     let players = arr.filter(p => p !== '');
-    console.log(players);
     if (players.length < 4){
         res.render(
             'players',
@@ -51,6 +50,5 @@ app.post('/game', (req, res) => {
         res.render('index');
     }
 })
-
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
