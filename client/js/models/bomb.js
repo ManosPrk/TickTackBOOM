@@ -11,7 +11,7 @@ export class Bomb{
     
     startTimer(randomExplodingTime, game){
         let bombTickAudio = Common.createAudioElement(this.tickingSoundpath, true);
-        randomExplodingTime = 0.5;
+        // randomExplodingTime = 0.5;
         bombTickAudio.loop = true;
         let bombExplodingAudio = Common.createAudioElement(this.explodingSoundpath, false);
        
