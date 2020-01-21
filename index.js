@@ -3,7 +3,7 @@ const express = require('express')
 const cookieParser = require('cookie-parser')
 const fs = require('fs')
 const app = express()
-const port = 3000
+const port = process.env.PORT || 5000
 var jsdom = require("jsdom");
 
 ///get JQ
