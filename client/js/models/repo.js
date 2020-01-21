@@ -16,8 +16,6 @@ export class Repo{
         else{
             return this.getEntities(syllables).slice(0, syllables.length);
         }
-        
-        
     }
 
     static getSides(){
