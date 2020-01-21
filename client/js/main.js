@@ -8,8 +8,9 @@ import { Common } from "./common/common.js";
 export class Main{
     constructor(){
         this.players = [];
-        let formData = JSON.parse(Common.getCookie('players-data'));
-        let arr = Object.values(formData);
+        let arr = JSON.parse(Common.getCookie('players-data'));
+        // let arr = Object.values(formData);
+        console.log(arr);
         arr.filter(name => name !== '')
             .forEach((player, index) => this.players.push(new Player(player, index)));
         // playersInput.forEach(p => console.log(p));

@@ -10,6 +10,9 @@
 <body>
     <div id="player-input-container" class="page-container">
         <h1>Insert players!</h1>
+        <% if (message) { %>
+            <strong id="players-error-message"><%= message %></strong>
+              <% } %>
         <form action="/game" method="POST" class="page-container">
             <input type="text" name="player-1" placeholder="Name..." class="player">
             <input type="text" name="player-2" class="player">
@@ -24,8 +27,9 @@
             <input type="text" name="player-11" class="player">
             <input type="text" name="player-12" class="player">
             <input type="submit" value="Start Game!" id="game-start" class="game-button"></input>
+
         </form>
-        
+
     </div>
     
 </body>
