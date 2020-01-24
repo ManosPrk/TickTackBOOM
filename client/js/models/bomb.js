@@ -1,9 +1,8 @@
 import { Common } from "../common/common.js";
 
-
 export class Bomb{
     constructor(){
-        this.tickingSoundpath = 'audio/tick.mp3';
+        this.tickingSoundpath = 'audio/tick.wav';
         this.explodingSoundpath = 'audio/boom.mp3';
         this.ticking = false;
         this.exploded = true;

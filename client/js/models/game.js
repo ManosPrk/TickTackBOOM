@@ -17,9 +17,9 @@ export class Game{
         this.diceEle = document.getElementById('dice');
         this.cardEle = document.getElementById('card');
         this.bombEle = document.getElementById('bomb');
-        this.stadingsEle = document.getElementById('standings');
+        this.stadingsEle = document.getElementById('standings-list');
         this.standingsModalEle = document.getElementById('standings-modal');
-        this.selectLoserEle = document.getElementById('select-loser');
+        this.selectLoserEle = document.getElementById('select-loser-list');
         this.loserModalEle = document.getElementById('select-loser-modal');
         this.cardsLeftEle = document.getElementById('cards-left');
         this.players.forEach(player => this.createPlayerElement(player));
@@ -136,14 +136,12 @@ export class Game{
         this.players.sort((a, b) => (b.cardsTaken > a.cardsTaken) ? 1: -1);
         this.players.forEach((player, index) => {
             if (index === 0){
-                let loserHeader = document.createElement('h1');
-                loserHeader.classList.add('modal-header');
+                let loserHeader = document.getElementById('loser-header');
                 loserHeader.textContent = `${player.name} Lost!`;
-                this.stadingsEle.appendChild(loserHeader);
             }
             let listItem = document.createElement('li');
             listItem.classList.add('standings-list-items');
-            listItem.textContent = `${player.name}, rounds lost: ${player.cardsTaken}`;
+            listItem.textContent = `${player.name}, Rounds lost: ${player.cardsTaken}`;
             this.stadingsEle.appendChild(listItem);
         });
         this.standingsModalEle.style.display = 'flex';
