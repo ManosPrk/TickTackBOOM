@@ -1,10 +1,10 @@
 
-const express = require('express')
-const cookieParser = require('cookie-parser')
-const fs = require('fs')
-const app = express()
-const port = process.env.PORT || 5000
-var jsdom = require("jsdom");
+const express = require('express');
+const cookieParser = require('cookie-parser');
+const fs = require('fs');
+const app = express();
+const port = process.env.PORT || 5000;
+// var jsdom = require("jsdom");
 
 // ///get JQ
 // const { JSDOM } = jsdom;
@@ -51,4 +51,4 @@ app.post('/game', (req, res) => {
     }
 })
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+app.listen(port, () => console.log(`Example app listening on port ${port}!`));
