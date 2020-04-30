@@ -18,7 +18,7 @@
     "cookie-parser": "^1.4.4",
     "ejs": "3.0.1",
     "express": "^4.17.1",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "jsdom": "^15.2.1",
     "memory-cache": "^0.2.0"
   },
